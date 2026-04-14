@@ -180,51 +180,57 @@ table td {
     background: #ffdb70;
     box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
 }
-
 /* ==========================================
-   手機版適配 (螢幕寬度小於 768px 時觸發)
+   最終優化：手機版易讀性強化
    ========================================== */
 @media (max-width: 768px) {
-    /* 1. 調整導航欄：縮小間距防止掉字 */
-    .logo {
-        font-size: 1.1rem; /* 稍微縮小 Logo */
-        padding-right: 5px;
-    }
-
-    nav .container {
-        padding: 0 10px; /* 縮小容器邊距，騰出更多空間給選單 */
-    }
-
+    /* 1. 導航欄：保持一行不掉字 */
     nav ul li a {
-        padding: 8px 4px;   /* 關鍵：極大縮小左右間距 (原 16px -> 8px) */
-        font-size: 0.8rem;  /* 稍微縮小字體 */
-        letter-spacing: -0.5px; /* 微調字距，爭取空間 */
+        padding: 8px 4px;
+        font-size: 0.8rem;
+        letter-spacing: -0.5px;
     }
 
-    /* 2. 調整英雄區標題 */
-    .hero h1 {
-        font-size: 2rem;
-        padding: 0 10px;
-    }
-
-    .hero p {
-        font-size: 1rem;
-    }
-
-    /* 3. 調整區塊內距 */
+    /* 2. 內容區域：增加邊距與字體大小 */
     section {
-        padding: 40px 0;
+        padding: 30px 15px;
     }
 
-    /* 4. 強制卡片滿版 */
-    .col {
-        flex: 0 0 100%;
+    h2 {
+        font-size: 1.6rem;
     }
 
-    /* 5. 允許表格橫向滾動 (避免數據被切掉) */
+    /* 3. 關鍵修正：針對「課程簡介」與「配速工具」的表格文字 */
+    table td, table th {
+        font-size: 1rem !important; /* 提升至手機標準閱讀大小 (約 16px) */
+        padding: 12px 8px !important; /* 增加點擊感與呼吸感 */
+        line-height: 1.4;
+    }
+
+    /* 讓表格標題更顯眼 */
+    table th {
+        font-weight: 700;
+        letter-spacing: 1px;
+    }
+
+    /* 4. 針對「教練資歷」的清單文字 */
+    .list-group li, p {
+        font-size: 1.05rem; 
+        line-height: 1.8;
+    }
+
+    /* 5. 確保表格在手機上可以左右滑動，但字體不縮小 */
     table {
         display: block;
+        width: 100%;
         overflow-x: auto;
-        white-space: nowrap;
+        -webkit-overflow-scrolling: touch; /* 讓 iOS 滑動更順暢 */
+    }
+
+    /* 6. 按鈕在手機上稍微加大，更好點擊 */
+    .btn {
+        width: 80%; /* 讓按鈕在手機上變寬一點，方便大拇指點擊 */
+        max-width: 300px;
+        padding: 15px 20px;
     }
 }
