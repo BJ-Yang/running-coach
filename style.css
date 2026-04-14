@@ -1,4 +1,8 @@
-/* 全域美化 */
+/* ==========================================
+   跑班網站全域樣式 (style.css)
+   ========================================== */
+
+/* 1. 變數定義：一鍵修改全站色調 */
 :root {
     --primary-color: #ffc107;   /* 跑班主色：活力黃 */
     --dark-color: #1a1a1a;      /* 深色背景 */
@@ -7,8 +11,11 @@
     --transition: all 0.3s ease;
 }
 
+/* 2. 基本重置與字體 */
 * {
-    margin: 0; padding: 0; box-sizing: border-box;
+    margin: 0;
+    padding: 0;
+    box-sizing: border-box;
 }
 
 body {
@@ -24,7 +31,7 @@ body {
     padding: 0 20px;
 }
 
-/* 1. 導航欄 - 增加陰影與磨砂效果 */
+/* 3. 導航欄 - 磨砂玻璃質感 */
 nav {
     background: rgba(26, 26, 26, 0.95);
     backdrop-filter: blur(10px);
@@ -66,7 +73,7 @@ nav ul li a:hover {
     color: var(--primary-color);
 }
 
-/* 2. 英雄區 - 增加文字層次感 */
+/* 4. 英雄區 (Hero Section) */
 .hero {
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
                 url('https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=1350&q=80');
@@ -86,7 +93,29 @@ nav ul li a:hover {
     text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
 }
 
-/* 3. 卡片設計 - 增加微陰影與圓角 */
+/* 5. 通用區塊與標題樣式 */
+section {
+    padding: 60px 0;
+}
+
+h2 {
+    font-size: 2rem;
+    position: relative;
+    padding-bottom: 10px;
+    margin-bottom: 30px;
+}
+
+h2::after {
+    content: '';
+    position: absolute;
+    left: 0;
+    bottom: 0;
+    width: 50px;
+    height: 4px;
+    background: var(--primary-color);
+}
+
+/* 6. 卡片排版 */
 .row {
     display: flex;
     flex-wrap: wrap;
@@ -110,7 +139,7 @@ nav ul li a:hover {
     box-shadow: 0 8px 30px rgba(0,0,0,0.1);
 }
 
-/* 4. 表格美化 - 讓數據清晰好讀 */
+/* 7. 表格美化 */
 table {
     width: 100%;
     border-collapse: separate;
@@ -131,13 +160,10 @@ table th {
 table td {
     padding: 15px;
     border-bottom: 1px solid #eee;
+    text-align: center;
 }
 
-table tr:last-child td {
-    border-bottom: none;
-}
-
-/* 5. 按鈕美化 - 增加互動感 */
+/* 8. 按鈕樣式 */
 .btn {
     display: inline-block;
     padding: 12px 35px;
@@ -148,7 +174,6 @@ table tr:last-child td {
     font-weight: bold;
     transition: var(--transition);
     border: none;
-    cursor: pointer;
 }
 
 .btn:hover {
@@ -156,20 +181,44 @@ table tr:last-child td {
     box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
 }
 
-/* 6. 標題裝飾 */
-h2 {
-    font-size: 2rem;
-    position: relative;
-    padding-bottom: 10px;
-    margin-bottom: 30px;
-}
+/* ==========================================
+   手機版適配 (螢幕寬度小於 768px 時觸發)
+   ========================================== */
+@media (max-width: 768px) {
+    /* 1. 調整導航欄 */
+    .logo {
+        font-size: 1.2rem;
+    }
 
-h2::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 50px;
-    height: 4px;
-    background: var(--primary-color);
+    nav ul li a {
+        padding: 8px 8px;
+        font-size: 0.85rem;
+    }
+
+    /* 2. 調整英雄區標題 */
+    .hero h1 {
+        font-size: 2rem;
+        padding: 0 10px;
+    }
+
+    .hero p {
+        font-size: 1rem;
+    }
+
+    /* 3. 調整區塊內距 */
+    section {
+        padding: 40px 0;
+    }
+
+    /* 4. 強制卡片滿版 */
+    .col {
+        flex: 0 0 100%;
+    }
+
+    /* 5. 允許表格橫向滾動 (避免跑班數據被切掉) */
+    table {
+        display: block;
+        overflow-x: auto;
+        white-space: nowrap;
+    }
 }
