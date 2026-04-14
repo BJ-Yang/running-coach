@@ -65,6 +65,13 @@ nav ul li a {
     transition: var(--transition);
 }
 
+/* 新增：當前頁面的發亮效果 */
+nav ul li a.active {
+    color: var(--primary-color); /* 變成活力黃 */
+    border-bottom: 2px solid var(--primary-color); /* 下方加一條線 */
+    font-weight: bold;
+}
+
 nav ul li a:hover { color: var(--primary-color); }
 
 /* 英雄區 */
