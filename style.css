@@ -1,21 +1,17 @@
 /* ==========================================
-   跑班網站全域樣式 (style.css)
+   跑班網站全域樣式 - 最終整合版
    ========================================== */
 
-/* 1. 變數定義：一鍵修改全站色調 */
 :root {
-    --primary-color: #ffc107;   /* 跑班主色：活力黃 */
-    --dark-color: #1a1a1a;      /* 深色背景 */
-    --light-bg: #f8f9fa;        /* 淺色背景 */
+    --primary-color: #ffc107;
+    --dark-color: #1a1a1a;
+    --light-bg: #f8f9fa;
     --text-color: #333;
     --transition: all 0.3s ease;
 }
 
-/* 2. 基本重置與字體 */
 * {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
+    margin: 0; padding: 0; box-sizing: border-box;
 }
 
 body {
@@ -31,7 +27,7 @@ body {
     padding: 0 20px;
 }
 
-/* 3. 導航欄 - 磨砂玻璃質感 */
+/* 導航欄 */
 nav {
     background: rgba(26, 26, 26, 0.95);
     backdrop-filter: blur(10px);
@@ -52,8 +48,8 @@ nav .container {
 .logo {
     font-size: 1.5rem;
     font-weight: 800;
-    letter-spacing: 1px;
     color: var(--primary-color);
+    text-decoration: none;
 }
 
 nav ul {
@@ -69,17 +65,15 @@ nav ul li a {
     transition: var(--transition);
 }
 
-nav ul li a:hover {
-    color: var(--primary-color);
-}
+nav ul li a:hover { color: var(--primary-color); }
 
-/* 4. 英雄區 (Hero Section) */
+/* 英雄區 */
 .hero {
     background: linear-gradient(rgba(0,0,0,0.5), rgba(0,0,0,0.7)), 
                 url('https://images.unsplash.com/photo-1476480862126-209bfaa8edc8?auto=format&fit=crop&w=1350&q=80');
     background-size: cover;
     background-position: center;
-    height: 70vh;
+    height: 60vh;
     display: flex;
     align-items: center;
     justify-content: center;
@@ -87,150 +81,35 @@ nav ul li a:hover {
     color: #fff;
 }
 
-.hero h1 {
-    font-size: 3.5rem;
-    margin-bottom: 1rem;
-    text-shadow: 2px 2px 4px rgba(0,0,0,0.5);
-}
+.hero h1 { font-size: 3.5rem; margin-bottom: 1rem; }
 
-/* 5. 通用區塊與標題樣式 */
-section {
-    padding: 60px 0;
-}
+/* 通用設定 */
+section { padding: 60px 0; }
+h2 { font-size: 2rem; margin-bottom: 30px; position: relative; padding-bottom: 10px; }
+h2::after { content: ''; position: absolute; left: 0; bottom: 0; width: 50px; height: 4px; background: var(--primary-color); }
 
-h2 {
-    font-size: 2rem;
-    position: relative;
-    padding-bottom: 10px;
-    margin-bottom: 30px;
-}
+/* 卡片與表格 */
+.row { display: flex; flex-wrap: wrap; gap: 30px; }
+.col { flex: 1; min-width: 280px; padding: 30px; background: #fff; border-radius: 12px; box-shadow: 0 4px 20px rgba(0,0,0,0.05); border-top: 5px solid var(--primary-color); }
 
-h2::after {
-    content: '';
-    position: absolute;
-    left: 0;
-    bottom: 0;
-    width: 50px;
-    height: 4px;
-    background: var(--primary-color);
-}
+table { width: 100%; border-collapse: separate; border-spacing: 0; margin: 20px 0; border-radius: 10px; overflow: hidden; box-shadow: 0 4px 15px rgba(0,0,0,0.05); }
+table th { background: var(--dark-color); color: #fff; padding: 15px; }
+table td { padding: 15px; border-bottom: 1px solid #eee; text-align: center; }
 
-/* 6. 卡片排版 */
-.row {
-    display: flex;
-    flex-wrap: wrap;
-    gap: 30px;
-    margin-top: 30px;
-}
+.btn { display: inline-block; padding: 12px 35px; background: var(--primary-color); color: var(--dark-color); text-decoration: none; border-radius: 50px; font-weight: bold; transition: var(--transition); border: none; cursor: pointer; }
 
-.col {
-    flex: 1;
-    min-width: 280px;
-    padding: 30px;
-    background: #fff;
-    border-radius: 12px;
-    box-shadow: 0 4px 20px rgba(0,0,0,0.05);
-    transition: var(--transition);
-    border-top: 5px solid var(--primary-color);
-}
-
-.col:hover {
-    transform: translateY(-5px);
-    box-shadow: 0 8px 30px rgba(0,0,0,0.1);
-}
-
-/* 7. 表格美化 */
-table {
-    width: 100%;
-    border-collapse: separate;
-    border-spacing: 0;
-    margin: 30px 0;
-    border-radius: 10px;
-    overflow: hidden;
-    box-shadow: 0 4px 15px rgba(0,0,0,0.05);
-}
-
-table th {
-    background-color: var(--dark-color);
-    color: #fff;
-    padding: 15px;
-    font-weight: 500;
-}
-
-table td {
-    padding: 15px;
-    border-bottom: 1px solid #eee;
-    text-align: center;
-}
-
-/* 8. 按鈕樣式 */
-.btn {
-    display: inline-block;
-    padding: 12px 35px;
-    background: var(--primary-color);
-    color: var(--dark-color);
-    text-decoration: none;
-    border-radius: 50px;
-    font-weight: bold;
-    transition: var(--transition);
-    border: none;
-}
-
-.btn:hover {
-    background: #ffdb70;
-    box-shadow: 0 4px 15px rgba(255, 193, 7, 0.4);
-}
-/* ==========================================
-   最終優化：手機版易讀性強化
-   ========================================== */
+/* 手機版適配區 */
 @media (max-width: 768px) {
-    /* 1. 導航欄：保持一行不掉字 */
-    nav ul li a {
-        padding: 8px 4px;
-        font-size: 0.8rem;
-        letter-spacing: -0.5px;
-    }
-
-    /* 2. 內容區域：增加邊距與字體大小 */
-    section {
-        padding: 30px 15px;
-    }
-
-    h2 {
-        font-size: 1.6rem;
-    }
-
-    /* 3. 關鍵修正：針對「課程簡介」與「配速工具」的表格文字 */
-    table td, table th {
-        font-size: 1rem !important; /* 提升至手機標準閱讀大小 (約 16px) */
-        padding: 12px 8px !important; /* 增加點擊感與呼吸感 */
-        line-height: 1.4;
-    }
-
-    /* 讓表格標題更顯眼 */
-    table th {
-        font-weight: 700;
-        letter-spacing: 1px;
-    }
-
-    /* 4. 針對「教練資歷」的清單文字 */
-    .list-group li, p {
-        font-size: 1.05rem; 
-        line-height: 1.8;
-    }
-
-    /* 5. 確保表格在手機上可以左右滑動，但字體不縮小 */
-    table {
-        display: block;
-        width: 100%;
-        overflow-x: auto;
-        -webkit-overflow-scrolling: touch; /* 讓 iOS 滑動更順暢 */
-    }
-
-    /* 6. 按鈕在手機上稍微加大，更好點擊 */
-    .btn {
-        width: 80%; /* 讓按鈕在手機上變寬一點，方便大拇指點擊 */
-        max-width: 300px;
-        padding: 15px 20px;
-    }
+    nav .container { padding: 0 10px; }
+    nav ul li a { padding: 8px 4px; font-size: 0.82rem; letter-spacing: -0.5px; }
+    .logo { font-size: 1.1rem; }
+    
+    section { padding: 30px 15px; }
+    .hero h1 { font-size: 2.2rem; }
+    
+    /* 強化易讀性 */
+    p, li, table td, table th { font-size: 1.05rem !important; }
+    table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
+    .col { flex: 0 0 100%; }
+    .btn { width: 100%; text-align: center; }
 }
