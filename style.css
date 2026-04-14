@@ -185,14 +185,20 @@ table td {
    手機版適配 (螢幕寬度小於 768px 時觸發)
    ========================================== */
 @media (max-width: 768px) {
-    /* 1. 調整導航欄 */
+    /* 1. 調整導航欄：縮小間距防止掉字 */
     .logo {
-        font-size: 1.2rem;
+        font-size: 1.1rem; /* 稍微縮小 Logo */
+        padding-right: 5px;
+    }
+
+    nav .container {
+        padding: 0 10px; /* 縮小容器邊距，騰出更多空間給選單 */
     }
 
     nav ul li a {
-        padding: 8px 8px;
-        font-size: 0.85rem;
+        padding: 8px 4px;   /* 關鍵：極大縮小左右間距 (原 16px -> 8px) */
+        font-size: 0.8rem;  /* 稍微縮小字體 */
+        letter-spacing: -0.5px; /* 微調字距，爭取空間 */
     }
 
     /* 2. 調整英雄區標題 */
@@ -215,7 +221,7 @@ table td {
         flex: 0 0 100%;
     }
 
-    /* 5. 允許表格橫向滾動 (避免跑班數據被切掉) */
+    /* 5. 允許表格橫向滾動 (避免數據被切掉) */
     table {
         display: block;
         overflow-x: auto;
