@@ -114,9 +114,5 @@ table td { padding: 15px; border-bottom: 1px solid #eee; text-align: center; }
     section { padding: 30px 15px; }
     .hero h1 { font-size: 2.2rem; }
     
-    /* 強化易讀性 */
-    p, li, table td, table th { font-size: 1.05rem !important; }
-    table { display: block; overflow-x: auto; -webkit-overflow-scrolling: touch; }
-    .col { flex: 0 0 100%; }
-    .btn { width: 100%; text-align: center; }
+
 }
